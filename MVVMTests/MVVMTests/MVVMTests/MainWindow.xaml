@@ -1,0 +1,27 @@
+﻿<Window x:Class="MVVMTests.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MVVMTests"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="200" Width="600"
+        DataContext="{Binding Source={StaticResource Locator}, Path=Main}">
+    <Grid>
+        <StackPanel Orientation="Horizontal">
+            <Label Content="What up" FontSize="70"></Label>
+            <Label Content="{Binding MyChar}" FontSize="70"></Label>
+            <Label Content="?" FontSize="70"></Label>
+            <ListView ItemsSource="{Binding Collection}" Width="139">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <Label Content="{Binding Squishiness}" Background="LightGreen"></Label>
+                            <Label Content="{Binding Grossness}" Background="LightSalmon"></Label>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+    </Grid>
+</Window>

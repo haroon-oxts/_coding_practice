@@ -1,0 +1,11 @@
+C:\Users\hhaider\Documents\_coding_practice\TimerTest\TimerTest\TimerHH\bin\Debug\netcoreapp2.0\TimerHH.deps.json
+C:\Users\hhaider\Documents\_coding_practice\TimerTest\TimerTest\TimerHH\bin\Debug\netcoreapp2.0\TimerHH.runtimeconfig.json
+C:\Users\hhaider\Documents\_coding_practice\TimerTest\TimerTest\TimerHH\bin\Debug\netcoreapp2.0\TimerHH.runtimeconfig.dev.json
+C:\Users\hhaider\Documents\_coding_practice\TimerTest\TimerTest\TimerHH\bin\Debug\netcoreapp2.0\TimerHH.dll
+C:\Users\hhaider\Documents\_coding_practice\TimerTest\TimerTest\TimerHH\bin\Debug\netcoreapp2.0\TimerHH.pdb
+C:\Users\hhaider\Documents\_coding_practice\TimerTest\TimerTest\TimerHH\obj\Debug\netcoreapp2.0\TimerHH.csprojResolveAssemblyReference.cache
+C:\Users\hhaider\Documents\_coding_practice\TimerTest\TimerTest\TimerHH\obj\Debug\netcoreapp2.0\TimerHH.csproj.CoreCompileInputs.cache
+C:\Users\hhaider\Documents\_coding_practice\TimerTest\TimerTest\TimerHH\obj\Debug\netcoreapp2.0\TimerHH.AssemblyInfoInputs.cache
+C:\Users\hhaider\Documents\_coding_practice\TimerTest\TimerTest\TimerHH\obj\Debug\netcoreapp2.0\TimerHH.AssemblyInfo.cs
+C:\Users\hhaider\Documents\_coding_practice\TimerTest\TimerTest\TimerHH\obj\Debug\netcoreapp2.0\TimerHH.dll
+C:\Users\hhaider\Documents\_coding_practice\TimerTest\TimerTest\TimerHH\obj\Debug\netcoreapp2.0\TimerHH.pdb

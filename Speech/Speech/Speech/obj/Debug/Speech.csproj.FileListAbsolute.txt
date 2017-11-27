@@ -1,0 +1,7 @@
+C:\Users\hhaider\Documents\_coding_practice\Speech\Speech\Speech\bin\Debug\Speech.exe.config
+C:\Users\hhaider\Documents\_coding_practice\Speech\Speech\Speech\bin\Debug\Speech.exe
+C:\Users\hhaider\Documents\_coding_practice\Speech\Speech\Speech\bin\Debug\Speech.pdb
+C:\Users\hhaider\Documents\_coding_practice\Speech\Speech\Speech\obj\Debug\Speech.csprojResolveAssemblyReference.cache
+C:\Users\hhaider\Documents\_coding_practice\Speech\Speech\Speech\obj\Debug\Speech.csproj.CoreCompileInputs.cache
+C:\Users\hhaider\Documents\_coding_practice\Speech\Speech\Speech\obj\Debug\Speech.exe
+C:\Users\hhaider\Documents\_coding_practice\Speech\Speech\Speech\obj\Debug\Speech.pdb
