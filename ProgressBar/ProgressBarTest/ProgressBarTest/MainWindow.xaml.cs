@@ -20,14 +20,10 @@ namespace ProgressBarTest
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window , INotifyPropertyChanged
+    public partial class MainWindow : Window
     {
 
         int value;
-
-        private double m_thing;
-
-        public double Thing { get { return m_thing; } set { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Thing")); m_thing = value; } }
 
         public MainWindow()
         {
@@ -37,17 +33,15 @@ namespace ProgressBarTest
             Bar.Minimum = 0;
 
             value = 30;
-
-            Thing = -2.23425;
+            
 
 
             DataContext = this;
 
             UpdateBar().ContinueWith(t => { }) ;
 
-
-
         }
+
 
 
         async Task UpdateBar()
@@ -58,13 +52,9 @@ namespace ProgressBarTest
 
                 Bar.Value = Bar.Maximum - value;
 
-                Thing++;
-
                 await Task.Delay(100);
             }
             
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

@@ -5,11 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProgressBarTest"
         mc:Ignorable="d"
-        Title="MainWindow" Height="80" Width="525">
+        Title="MainWindow" Height="50" Width="525">
     <Grid>
-        <StackPanel>
-            <ProgressBar Name="Bar"/>
-            <TextBox Text="{Binding Thing, StringFormat=N2}"></TextBox> 
-        </StackPanel>
+        <ProgressBar Name="Bar"/>
     </Grid>
 </Window>
