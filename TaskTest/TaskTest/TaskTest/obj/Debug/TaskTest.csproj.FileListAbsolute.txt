@@ -1,0 +1,7 @@
+C:\Users\hhaider\Documents\_coding_practice\TaskTest\TaskTest\TaskTest\bin\Debug\TaskTest.exe.config
+C:\Users\hhaider\Documents\_coding_practice\TaskTest\TaskTest\TaskTest\bin\Debug\TaskTest.exe
+C:\Users\hhaider\Documents\_coding_practice\TaskTest\TaskTest\TaskTest\bin\Debug\TaskTest.pdb
+C:\Users\hhaider\Documents\_coding_practice\TaskTest\TaskTest\TaskTest\obj\Debug\TaskTest.csprojResolveAssemblyReference.cache
+C:\Users\hhaider\Documents\_coding_practice\TaskTest\TaskTest\TaskTest\obj\Debug\TaskTest.csproj.CoreCompileInputs.cache
+C:\Users\hhaider\Documents\_coding_practice\TaskTest\TaskTest\TaskTest\obj\Debug\TaskTest.exe
+C:\Users\hhaider\Documents\_coding_practice\TaskTest\TaskTest\TaskTest\obj\Debug\TaskTest.pdb

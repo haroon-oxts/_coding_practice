@@ -1,0 +1,7 @@
+C:\Users\hhaider\Documents\_coding_practice\SpeechTest\SpeechTestConsole\SpeechTestConsole\bin\Debug\SpeechTestConsole.exe.config
+C:\Users\hhaider\Documents\_coding_practice\SpeechTest\SpeechTestConsole\SpeechTestConsole\bin\Debug\SpeechTestConsole.exe
+C:\Users\hhaider\Documents\_coding_practice\SpeechTest\SpeechTestConsole\SpeechTestConsole\bin\Debug\SpeechTestConsole.pdb
+C:\Users\hhaider\Documents\_coding_practice\SpeechTest\SpeechTestConsole\SpeechTestConsole\obj\Debug\SpeechTestConsole.csprojResolveAssemblyReference.cache
+C:\Users\hhaider\Documents\_coding_practice\SpeechTest\SpeechTestConsole\SpeechTestConsole\obj\Debug\SpeechTestConsole.csproj.CoreCompileInputs.cache
+C:\Users\hhaider\Documents\_coding_practice\SpeechTest\SpeechTestConsole\SpeechTestConsole\obj\Debug\SpeechTestConsole.exe
+C:\Users\hhaider\Documents\_coding_practice\SpeechTest\SpeechTestConsole\SpeechTestConsole\obj\Debug\SpeechTestConsole.pdb

@@ -1,0 +1,15 @@
+C:\Users\hhaider\Documents\_coding_practice\ProgressBar\ProgressBarTest\ProgressBarTest\bin\Debug\ProgressBarTest.exe.config
+C:\Users\hhaider\Documents\_coding_practice\ProgressBar\ProgressBarTest\ProgressBarTest\bin\Debug\ProgressBarTest.exe
+C:\Users\hhaider\Documents\_coding_practice\ProgressBar\ProgressBarTest\ProgressBarTest\bin\Debug\ProgressBarTest.pdb
+C:\Users\hhaider\Documents\_coding_practice\ProgressBar\ProgressBarTest\ProgressBarTest\obj\Debug\ProgressBarTest.csprojResolveAssemblyReference.cache
+C:\Users\hhaider\Documents\_coding_practice\ProgressBar\ProgressBarTest\ProgressBarTest\obj\Debug\MainWindow.g.cs
+C:\Users\hhaider\Documents\_coding_practice\ProgressBar\ProgressBarTest\ProgressBarTest\obj\Debug\App.g.cs
+C:\Users\hhaider\Documents\_coding_practice\ProgressBar\ProgressBarTest\ProgressBarTest\obj\Debug\ProgressBarTest_MarkupCompile.cache
+C:\Users\hhaider\Documents\_coding_practice\ProgressBar\ProgressBarTest\ProgressBarTest\obj\Debug\ProgressBarTest_MarkupCompile.lref
+C:\Users\hhaider\Documents\_coding_practice\ProgressBar\ProgressBarTest\ProgressBarTest\obj\Debug\MainWindow.baml
+C:\Users\hhaider\Documents\_coding_practice\ProgressBar\ProgressBarTest\ProgressBarTest\obj\Debug\ProgressBarTest.g.resources
+C:\Users\hhaider\Documents\_coding_practice\ProgressBar\ProgressBarTest\ProgressBarTest\obj\Debug\ProgressBarTest.Properties.Resources.resources
+C:\Users\hhaider\Documents\_coding_practice\ProgressBar\ProgressBarTest\ProgressBarTest\obj\Debug\ProgressBarTest.csproj.GenerateResource.Cache
+C:\Users\hhaider\Documents\_coding_practice\ProgressBar\ProgressBarTest\ProgressBarTest\obj\Debug\ProgressBarTest.csproj.CoreCompileInputs.cache
+C:\Users\hhaider\Documents\_coding_practice\ProgressBar\ProgressBarTest\ProgressBarTest\obj\Debug\ProgressBarTest.exe
+C:\Users\hhaider\Documents\_coding_practice\ProgressBar\ProgressBarTest\ProgressBarTest\obj\Debug\ProgressBarTest.pdb

@@ -1,0 +1,7 @@
+C:\Users\hhaider\Documents\_coding_practice\ThreadPractice\ThreadPractice\TaskWaitTest\bin\Debug\TaskWaitTest.exe.config
+C:\Users\hhaider\Documents\_coding_practice\ThreadPractice\ThreadPractice\TaskWaitTest\bin\Debug\TaskWaitTest.exe
+C:\Users\hhaider\Documents\_coding_practice\ThreadPractice\ThreadPractice\TaskWaitTest\bin\Debug\TaskWaitTest.pdb
+C:\Users\hhaider\Documents\_coding_practice\ThreadPractice\ThreadPractice\TaskWaitTest\obj\Debug\TaskWaitTest.csprojResolveAssemblyReference.cache
+C:\Users\hhaider\Documents\_coding_practice\ThreadPractice\ThreadPractice\TaskWaitTest\obj\Debug\TaskWaitTest.csproj.CoreCompileInputs.cache
+C:\Users\hhaider\Documents\_coding_practice\ThreadPractice\ThreadPractice\TaskWaitTest\obj\Debug\TaskWaitTest.exe
+C:\Users\hhaider\Documents\_coding_practice\ThreadPractice\ThreadPractice\TaskWaitTest\obj\Debug\TaskWaitTest.pdb
