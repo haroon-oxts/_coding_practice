@@ -13,12 +13,13 @@ namespace TaskWaitTest
 
             Stopwatch sw = new Stopwatch();
 
+            sw.Start();
 
             Task<int> t = Task.Run(() => { return StartWork(cancellation_token_source.Token); });
             Task t2 =  t.ContinueWith((i) => { AfterWork(i.Result); });
-            sw.Start();
 
 
+            Console.ReadKey();
 
             if (!t.Wait(TimeSpan.FromMilliseconds(2000)))
             {
@@ -31,6 +32,7 @@ namespace TaskWaitTest
             }
 
             Console.ReadKey();
+
         }
 
         public static Task<int> StartWork(CancellationToken cancellation_token)
@@ -54,7 +56,7 @@ namespace TaskWaitTest
 
         public static void AfterWork(int input)
         {
-            Console.WriteLine("Runnig AfterWork, StartWork loop ran " + input + " times");
+            Console.WriteLine("Running AfterWork, StartWork loop ran " + input + " times");
 
         }
     }
