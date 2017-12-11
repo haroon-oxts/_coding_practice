@@ -1,0 +1,60 @@
+﻿<Window x:Class="GuageTest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GuageTest"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Button Grid.Row="1" Grid.Column="1" Click="Button_Click"></Button>
+        <lvc:Gauge x:Name="ShitGuage" Grid.Row="1" Grid.Column="0" Margin="5"
+                   Binding.TargetUpdated="HandleGuageUpdated"
+                   Uses360Mode="True"
+                   From="0" To="100" Value="{Binding InputValue, NotifyOnTargetUpdated=True}"
+                   HighFontSize="60" Foreground="White"
+                   FromColor="#ffffff" 
+                   InnerRadius="0" GaugeBackground="Transparent">
+        </lvc:Gauge>
+        <Button Grid.Row="2" Grid.Column="1" Click="Button_Click_1" />
+        <Border Grid.Row="0" Grid.Column="1" Background="LightGreen" Width="100" Height="100" BorderBrush="Green">
+            <Border.Style>
+                <Style TargetType="Border">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Duration="0:0:0.400" To="3" Storyboard.TargetProperty="BorderThickness" />
+                                        <DoubleAnimation Duration="0:0:0.300" To="125" Storyboard.TargetProperty="Height" />
+                                        <DoubleAnimation Duration="0:0:0.300" To="125" Storyboard.TargetProperty="Width" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Duration="0:0:0.250" To="0" Storyboard.TargetProperty="BorderThickness" />
+                                        <DoubleAnimation Duration="0:0:0.150" To="100" Storyboard.TargetProperty="Height" />
+                                        <DoubleAnimation Duration="0:0:0.150" To="100" Storyboard.TargetProperty="Width" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
+        </Border>
+    </Grid>
+</Window>
