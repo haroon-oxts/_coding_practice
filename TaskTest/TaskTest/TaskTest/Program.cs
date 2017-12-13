@@ -14,14 +14,43 @@ namespace TaskTest
         {
             TaskRunningObject t = new TaskRunningObject();
 
-            t.StartThresholdCheck();
+            //Console.WriteLine("Running task");
+            //t.StartTask();
 
-            while (true)
-            {
-                Console.WriteLine("***Main thread***");
+            //Console.WriteLine("***Main thread***");
 
-                Thread.Sleep(1000);
-            }
+            //Console.WriteLine("***press key to cancel the task***");
+            //Console.ReadKey();
+            //t.CTS.Cancel();
+            //Console.WriteLine("***immediate report on t object***");
+            //Console.WriteLine("t object CTS status: " + t.CTS.IsCancellationRequested);
+            //Console.WriteLine("t object Task status: " + t.CurrentTask.Status);
+
+
+            //Console.WriteLine("***press key to create a new CTS and run task***");
+            //Console.ReadKey();
+            //t.StartTask();
+            //Console.WriteLine("***immediate report on t object***");
+            //Console.WriteLine("t object CTS status: " + t.CTS.IsCancellationRequested);
+            //Console.WriteLine("t object Task status: " + t.CurrentTask.Status);
+
+            Test();
+
+            Console.ReadKey();
+        }
+
+        private async static void Test()
+        {
+
+            Task t = Task.Run(() => { Thread.Sleep(2000); return 5; });
+
+            t.Start();
+
+            int x = t.tres
+
+
+            Console.WriteLine(x);
+
         }
 
     }
@@ -31,44 +60,95 @@ namespace TaskTest
 
     class TaskRunningObject
     {
-        public TaskRunningObject()
+        public CancellationTokenSource CTS { get; set; }
+        public Task CurrentTask            { get; set; }
+
+        public Task StartTask()
         {
-            m_threshold_check_cancellation_token_source = new CancellationTokenSource();
+            CTS = new CancellationTokenSource();
+
+            CurrentTask = ThingToDo(TimeSpan.FromMilliseconds(2000), CTS.Token);
+
+            return CurrentTask;
         }
 
-        public CancellationTokenSource m_threshold_check_cancellation_token_source { get; set; }
-
-        public void StartThresholdCheck()
+        private async Task ThingToDo(TimeSpan polling_timespan, CancellationToken cancellation_token)
         {
-            Task task_to_await = StartThresholdCheckAsync(TimeSpan.FromMilliseconds(1001), m_threshold_check_cancellation_token_source.Token);
-        }
+            Task current_task = null;
 
-        private async Task StartThresholdCheckAsync(TimeSpan polling_timespan, CancellationToken cancellation_token)
-        {
-            while (true)
+            //current_task = Task.Run(() => {
+
+            //    while (true)
+            //    {
+            //        cancellation_token.ThrowIfCancellationRequested();
+
+            //        //Console.WriteLine("------------Task Update-----------");
+            //        //Console.WriteLine("CurrentTask status: " + current_task.Status);
+            //        //Console.WriteLine("CurrentTask polling period: {0} Milliseconds", polling_timespan.TotalMilliseconds);
+            //        //Console.WriteLine("CurrentTask token cancellation status: " + cancellation_token.IsCancellationRequested);
+
+            //        //Task.Delay(polling_timespan, cancellation_token).Wait();
+            //    }
+
+            //},cancellation_token);
+
+            //while(current_task.Status != TaskStatus.RanToCompletion)
+            //{
+            //    Console.WriteLine("CurrentTask status: " + current_task.Status);
+            //}
+
+            current_task = Task.Run(() =>
             {
-                ThresholdCheck();
+                //for (int i = 10; i < 432543543; i++)
+                //{
+                //    // just for a long job
+                //    double d3 = Math.Sqrt((Math.Pow(i, 5) - Math.Pow(i, 2)) / Math.Sin(i * 8));
+                //}
 
-                Console.WriteLine("Ran ThresholdCheck(), timespan is {0} Ticks", polling_timespan.Ticks);
-                Console.WriteLine("Ran ThresholdCheck(), timespan is {0} Milliseconds", polling_timespan.TotalMilliseconds);
-                Console.WriteLine("Ran ThresholdCheck(), timespan as a string : {0} ", polling_timespan.ToString());
-                Console.WriteLine("Ran ThresholdCheck(), timespan is {0} Second component", polling_timespan.Seconds);
-                Console.WriteLine("Ran ThresholdCheck(), timespan is {0} Milliseconds component", polling_timespan.Milliseconds);
+                while (true)
+                {
 
-                await Task.Delay(polling_timespan, cancellation_token);
+
+                }
+
+                //return "Foo Completed.";
+
+            },cancellation_token);
+
+            while (current_task.Status != TaskStatus.RanToCompletion)
+            {
+                Console.WriteLine("Thread ID: {0}, Status: {1}", Thread.CurrentThread.ManagedThreadId, current_task.Status);
+
             }
 
+            await current_task;
         }
 
-        private void ThresholdCheck()
-        {
-            //if (IMUHeatMap.WarmedMaxAx > WarmUpPlugin.CurrentDevice.DeviceThresholds.WarmedMaxAx) { WarmUpPlugin.CurrentDevice.DeviceThresholds.AxPass = true; }
-            //if (IMUHeatMap.WarmedMaxAy > WarmUpPlugin.CurrentDevice.DeviceThresholds.WarmedMaxAy) { WarmUpPlugin.CurrentDevice.DeviceThresholds.AyPass = true; }
-            //if (IMUHeatMap.WarmedMaxAz > WarmUpPlugin.CurrentDevice.DeviceThresholds.WarmedMaxAz) { WarmUpPlugin.CurrentDevice.DeviceThresholds.AzPass = true; }
 
-            //if (IMUHeatMap.WarmedMaxWx > WarmUpPlugin.CurrentDevice.DeviceThresholds.WarmedMaxWx) { WarmUpPlugin.CurrentDevice.DeviceThresholds.WxPass = true; }
-            //if (IMUHeatMap.WarmedMaxWy > WarmUpPlugin.CurrentDevice.DeviceThresholds.WarmedMaxWy) { WarmUpPlugin.CurrentDevice.DeviceThresholds.WyPass = true; }
-            //if (IMUHeatMap.WarmedMaxWz > WarmUpPlugin.CurrentDevice.DeviceThresholds.WarmedMaxWz) { WarmUpPlugin.CurrentDevice.DeviceThresholds.WzPass = true; }
-        }
+        //private static async Task<string> Foo(int seconds)
+        //{
+        //    await Task.Run(() =>
+        //    {
+        //        for (int i = 0; i < seconds; i++)
+        //        {
+        //            Console.WriteLine("Thread ID: {0}, second {1}.", Thread.CurrentThread.ManagedThreadId, i);
+        //            Task.Delay(TimeSpan.FromSeconds(1)).Wait();
+        //        }
+
+        //        // in here don't return anything
+        //    });
+
+        //    return await Task.Run(() =>
+        //    {
+        //        for (int i = 0; i < seconds; i++)
+        //        {
+        //            Console.WriteLine("Thread ID: {0}, second {1}.", Thread.CurrentThread.ManagedThreadId, i);
+        //            Task.Delay(TimeSpan.FromSeconds(1)).Wait();
+        //        }
+
+        //        return "Foo Completed.";
+        //    });
+        //}
+
     }
 }
