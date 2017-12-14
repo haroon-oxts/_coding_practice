@@ -9,146 +9,105 @@ namespace TaskTest
 {
     class Program
     {
+        static CancellationTokenSource CTS;
 
         static void Main(string[] args)
         {
-            TaskRunningObject t = new TaskRunningObject();
 
-            //Console.WriteLine("Running task");
-            //t.StartTask();
+            List<Task> task_list = RunTasks();
 
-            //Console.WriteLine("***Main thread***");
+            foreach (Task t in task_list)
+            {
+                Console.WriteLine("Task " + t.Id + " :" + "Status - " + t.Status);
+            }
 
-            //Console.WriteLine("***press key to cancel the task***");
-            //Console.ReadKey();
-            //t.CTS.Cancel();
-            //Console.WriteLine("***immediate report on t object***");
-            //Console.WriteLine("t object CTS status: " + t.CTS.IsCancellationRequested);
-            //Console.WriteLine("t object Task status: " + t.CurrentTask.Status);
+            Task waiting_task = WaitForAll(task_list);
+
+            Console.WriteLine("-------Waiting for all tasks to complete------");
 
 
-            //Console.WriteLine("***press key to create a new CTS and run task***");
-            //Console.ReadKey();
-            //t.StartTask();
-            //Console.WriteLine("***immediate report on t object***");
-            //Console.WriteLine("t object CTS status: " + t.CTS.IsCancellationRequested);
-            //Console.WriteLine("t object Task status: " + t.CurrentTask.Status);
+            Console.WriteLine("Press a key to cancel tasks");
 
-            Test();
+            while (!waiting_task.IsCompleted)
+            {
+                Console.ReadKey();
+                CTS.Cancel();
+            }
+
+            foreach (Task t in task_list)
+            {
+                Console.WriteLine("Task " + t.Id + " :" + "Status - " + t.Status);
+            }
+
+            Console.WriteLine("Main Task :" + "Status - " + waiting_task.Status);
 
             Console.ReadKey();
         }
 
-        private async static void Test()
+
+        private static Task WaitForAll(List<Task> task_list)
         {
-
-            Task t = Task.Run(() => { Thread.Sleep(2000); return 5; });
-
-            t.Start();
-
-            int x = t.tres
-
-
-            Console.WriteLine(x);
-
+            return Task.WhenAll(task_list);
         }
 
-    }
-
-
-
-
-    class TaskRunningObject
-    {
-        public CancellationTokenSource CTS { get; set; }
-        public Task CurrentTask            { get; set; }
-
-        public Task StartTask()
+        private static List<Task> RunTasks()
         {
             CTS = new CancellationTokenSource();
 
-            CurrentTask = ThingToDo(TimeSpan.FromMilliseconds(2000), CTS.Token);
+            List<Task> task_list = new List<Task>(); 
 
-            return CurrentTask;
+            task_list.Add(Test(CTS.Token));
+            Console.WriteLine("Created task " + task_list[0].Id + " with cts: " + CTS.GetHashCode());
+
+            task_list.Add(Test(CTS.Token));
+            Console.WriteLine("Created task " + task_list[1].Id + " with cts: " + CTS.GetHashCode());
+
+            task_list.Add(Test(CTS.Token));
+            Console.WriteLine("Created task " + task_list[2].Id + " with cts: " + CTS.GetHashCode());
+
+            return task_list;
         }
 
-        private async Task ThingToDo(TimeSpan polling_timespan, CancellationToken cancellation_token)
+        private static Task Test(CancellationToken cancellation_token)
         {
-            Task current_task = null;
-
-            //current_task = Task.Run(() => {
-
-            //    while (true)
-            //    {
-            //        cancellation_token.ThrowIfCancellationRequested();
-
-            //        //Console.WriteLine("------------Task Update-----------");
-            //        //Console.WriteLine("CurrentTask status: " + current_task.Status);
-            //        //Console.WriteLine("CurrentTask polling period: {0} Milliseconds", polling_timespan.TotalMilliseconds);
-            //        //Console.WriteLine("CurrentTask token cancellation status: " + cancellation_token.IsCancellationRequested);
-
-            //        //Task.Delay(polling_timespan, cancellation_token).Wait();
-            //    }
-
-            //},cancellation_token);
-
-            //while(current_task.Status != TaskStatus.RanToCompletion)
-            //{
-            //    Console.WriteLine("CurrentTask status: " + current_task.Status);
-            //}
-
-            current_task = Task.Run(() =>
-            {
-                //for (int i = 10; i < 432543543; i++)
-                //{
-                //    // just for a long job
-                //    double d3 = Math.Sqrt((Math.Pow(i, 5) - Math.Pow(i, 2)) / Math.Sin(i * 8));
-                //}
+            Task t = null;
+            Random r = new Random();
+            int steps_to_complete = r.Next(3,8);
+        
+            t = Task.Run(() => {
 
                 while (true)
                 {
+                    try
+                    {
+                        cancellation_token.ThrowIfCancellationRequested();
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Task " + t.Id + " : " + " cancellation requested with token " + cancellation_token.GetHashCode() + ", IsCancellationRequested status: " + cancellation_token.IsCancellationRequested);
+                        return;
+                    }
 
+                    Console.WriteLine("Task " + t.Id + " : " + "on thread " + Thread.CurrentThread.ManagedThreadId + 
+                                      ", with token " + cancellation_token.GetHashCode() + 
+                                      ", IsCancellationRequested: " + cancellation_token.IsCancellationRequested + 
+                                      ", status - " + t.Status + 
+                                      ", steps to complete " + steps_to_complete);
+                    
+                    Task.Delay(1000).Wait();
+                    steps_to_complete--;
 
+                    if(steps_to_complete <= 0)
+                    {
+                        return;
+                    }
                 }
 
-                //return "Foo Completed.";
+            }, cancellation_token);
 
-            },cancellation_token);
-
-            while (current_task.Status != TaskStatus.RanToCompletion)
-            {
-                Console.WriteLine("Thread ID: {0}, Status: {1}", Thread.CurrentThread.ManagedThreadId, current_task.Status);
-
-            }
-
-            await current_task;
+            return t;
         }
 
-
-        //private static async Task<string> Foo(int seconds)
-        //{
-        //    await Task.Run(() =>
-        //    {
-        //        for (int i = 0; i < seconds; i++)
-        //        {
-        //            Console.WriteLine("Thread ID: {0}, second {1}.", Thread.CurrentThread.ManagedThreadId, i);
-        //            Task.Delay(TimeSpan.FromSeconds(1)).Wait();
-        //        }
-
-        //        // in here don't return anything
-        //    });
-
-        //    return await Task.Run(() =>
-        //    {
-        //        for (int i = 0; i < seconds; i++)
-        //        {
-        //            Console.WriteLine("Thread ID: {0}, second {1}.", Thread.CurrentThread.ManagedThreadId, i);
-        //            Task.Delay(TimeSpan.FromSeconds(1)).Wait();
-        //        }
-
-        //        return "Foo Completed.";
-        //    });
-        //}
-
     }
+
 }
