@@ -6,7 +6,36 @@
         xmlns:local="clr-namespace:WPFPractice"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        <Label Content="{Binding Number}"></Label>
+
+    <Grid x:Name="LayoutRoot">
+        <TextBlock TextWrapping="Wrap" FontSize="40" >
+        <Run Text="This is some sample text to have something to work with. Have a nice day! /Johan"/>
+        </TextBlock>
+        <Canvas Panel.ZIndex="99" >
+            <Rectangle x:Name="ScreenGlintRect"  
+            Width="{Binding Path=ActualWidth, ElementName=Window, Mode=Default}" 
+            Height="{Binding Path=ActualHeight, ElementName=Window, Mode=Default}" 
+            Opacity="0.4" >
+                <Rectangle.Triggers>
+                    <EventTrigger RoutedEvent="Rectangle.Loaded">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetName="ScreenGlintRect" 
+                    Storyboard.TargetProperty="(Canvas.Left)"
+                    From="-500" To="1000" Duration="0:0:2" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Rectangle.Triggers>
+
+                <Rectangle.Fill>
+                    <LinearGradientBrush StartPoint="0,1" EndPoint="1,1">
+                        <GradientStop Color="Transparent" Offset="0.0" />
+                        <GradientStop x:Name="GlintColor" Color="LightGreen" Offset="0.50" />
+                        <GradientStop Color="Transparent" Offset="1" />
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+        </Canvas>
     </Grid>
 </Window>
