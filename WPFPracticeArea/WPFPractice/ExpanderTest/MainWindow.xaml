@@ -13,7 +13,26 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>-->
-    <Grid>
-        <Image Source="../Images/Cross.png"/>
-    </Grid>
+    <Grid >
+        <Grid Margin="104,172,150,269" RenderTransformOrigin="0.418,0.5">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Border Grid.RowSpan="3" Grid.ColumnSpan="3" BorderThickness="1" BorderBrush="Black"  Background="Transparent">
+                <Border Background="Gray" Margin="-1"></Border>
+                <Border.Effect>
+                    <DropShadowEffect ShadowDepth="2" Direction="300" Opacity="0.2" BlurRadius="3"
+                        ></DropShadowEffect>
+                </Border.Effect>
+            </Border>
+            <Label Grid.RowSpan="3" Grid.ColumnSpan="3" Content="Hello" Foreground="Wheat"></Label>
+            </Grid>
+        </Grid>
 </Window>

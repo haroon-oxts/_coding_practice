@@ -1,0 +1,14 @@
+﻿<Window x:Class="MatrixRotateExample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MatrixRotateExample"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Rectangle Fill="#FF2E2EF1" HorizontalAlignment="Left" Height="73" Margin="215,123,0,0" Stroke="Black" VerticalAlignment="Top" Width="99"/>
+        <Button Content="Button" HorizontalAlignment="Left" Height="71" Margin="230,238,0,0" VerticalAlignment="Top" Width="116" Click="Button_Click"/>
+
+    </Grid>
+</Window>
