@@ -3,6 +3,7 @@ using OxTS.NavLib.DataStoreManager.Manager;
 using OxTS.NavLib.StreamItems;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -24,48 +25,54 @@ namespace RealTimeDataStoreManagerTest
 
             List<Tuple<uint, string>> stream_measurements = new List<Tuple<uint, string>>
                                                                 {
-                                                                    new Tuple<uint, string>(chosen_stream.StreamId, "Ax"),
-                                                                    new Tuple<uint, string>(chosen_stream.StreamId, "Ay"),
-                                                                    new Tuple<uint, string>(chosen_stream.StreamId, "Az"),
-                                                                    new Tuple<uint, string>(chosen_stream.StreamId, "InsNavMode"),
+                                                                    new Tuple<uint, string>(chosen_stream.StreamId, "Dist2d"),
+                                                                    new Tuple<uint, string>(chosen_stream.StreamId, "Dist3d"),                 
+                                                                    new Tuple<uint, string>(chosen_stream.StreamId, "Dist2dHold"),             
+                                                                    new Tuple<uint, string>(chosen_stream.StreamId, "Dist3dHold"),
+                                                                    new Tuple<uint, string>(chosen_stream.StreamId, "DigitalOut2Nano"),        
+                                                                    new Tuple<uint, string>(chosen_stream.StreamId, "DigitalOut2UpdateCount"),
+                                                                    new Tuple<uint, string>(chosen_stream.StreamId, "Nano"),
                                                                 };
 
-            rtdsman.ConfigureMeasurementsToRead(stream_measurements, 1, OxTS.NavLib.Common.Enums.MeasurementType.Multiple);
+            rtdsman.ConfigureMeasurementsToRead(stream_measurements, 1, OxTS.NavLib.Common.Enums.MeasurementType.Multiple);                                                                                                                                                                        
 
-            while (true)
+            long last_known_nano = 0;
+
+            using (StreamWriter file = new StreamWriter("log.txt", false))
             {
-
-                List<MeasurementValue> output_measurements = rtdsman.GetRealTimeData(1).GetData();
-
-                Console.WriteLine("---------------------------------------------------------------------------");
-
-                Console.WriteLine("{0,-10}{1,-17}{2,-8}{3,-15}{4,-6}{5,-15}{6,-15}", "StreamID", 
-                                                                                     "OriginalStreamId", 
-                                                                                     "Alive", 
-                                                                                     "Type", 
-                                                                                     "SN", 
-                                                                                     "Model", 
-                                                                                     "Lag Time");
-                Console.WriteLine("{0,-10}{1,-17}{2,-8}{3,-15}{4,-6}{5,-15}{6,-15}", chosen_stream.StreamId, 
-                                                                                     chosen_stream.OriginalStreamId, 
-                                                                                     chosen_stream.Alive, 
-                                                                                     chosen_stream.CodecType, 
-                                                                                     chosen_stream.DeviceSerialNumber, 
-                                                                                     chosen_stream.ProductModel, 
-                                                                                     chosen_stream.LagTime);
-
-                Console.WriteLine("\n");
-
-                //Output data using our dictionary to find which value corresponds to which name
-                if (output_measurements.Count > 0)
+                for (int i = 0; i < stream_measurements.Count; ++i)
                 {
-                    for (int i = 0; i < output_measurements.Count; ++i)
-                    {
-                        Console.WriteLine(output_measurements[i].MeasurementName + ":" + output_measurements[i].ValueString);
-                    }
+                    file.Write(stream_measurements[i].Item2 + ", ");
                 }
 
-                Thread.Sleep(1000);
+                file.WriteLine("");
+
+                while (true)
+                {
+                    List<MeasurementValue> output_measurements = rtdsman.GetRealTimeData(1).GetData();
+
+                    long current_nano = (long)output_measurements.Find(o => o.MeasurementName == "Nano").Value;
+
+                    //Output data using our dictionary to find which value corresponds to which name
+                    if (output_measurements.Count > 0)
+                    {
+                        if ( current_nano != last_known_nano)
+                        {
+                            for (int i = 0; i < output_measurements.Count; ++i)
+                            {
+                                file.Write(output_measurements[i].Value + ", ");
+                            }
+                            file.WriteLine("");
+                        }
+
+                    }
+                    else
+                    {
+                        file.WriteLine("List is empty " + DateTime.Now.Millisecond);
+                    }
+
+                    last_known_nano = current_nano;
+                }
             }
         }
 
