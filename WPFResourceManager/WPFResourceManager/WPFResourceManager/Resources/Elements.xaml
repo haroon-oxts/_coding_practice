@@ -1,0 +1,21 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:WPFResourceManager.Resources">
+    <ControlTemplate x:Key="RandomThing" TargetType="ItemsControl">
+        <ItemsControl Margin="5">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="20*" />
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Content="Stuf" FontSize="22" Background="#FFCF0101"/>
+                <Label Grid.Column="1" Content="Stuf" FontSize="22" Background="#FF46FF00"/>
+                <Label Grid.Column="2" Content="Stuf" FontSize="22" Background="#FF322A2A"/>
+                <Label Grid.Column="3" Content="Stuf" FontSize="22" Background="#FF00D1E6"/>
+                <Label Grid.Column="4" Content="Stuf" FontSize="22" Background="#FF0AD300"/>
+            </Grid>
+        </ItemsControl>
+    </ControlTemplate>    
+</ResourceDictionary>

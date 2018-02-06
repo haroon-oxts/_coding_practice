@@ -1,0 +1,22 @@
+﻿<Page x:Class="WPFResourceManager.Page3"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WPFResourceManager"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="Page3">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/WPFResourceManager;component/Resources/Colors.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/WPFResourceManager;component/Resources/Elements.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/WPFResourceManager;component/Resources/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid>
+        <ItemsControl Template="{DynamicResource RandomThing}"></ItemsControl>   
+    </Grid>
+</Page>

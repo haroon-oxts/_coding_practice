@@ -1,0 +1,34 @@
+﻿<Window x:Class="WPFResourceManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFResourceManager"
+        xmlns:srdrs="clr-namespace:WPFResourceManager.Resources"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="686" Width="415">
+    <!--srdrs:SharedResources.MergedDictionaries="Colors;Elements;Styles">-->
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/WPFResourcemanager;component/Resources/Colors.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="pack://application:,,,/WPFResourcemanager;component/Resources/Elements.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="pack://application:,,,/WPFResourcemanager;component/Resources/Styles.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid x:Name="MainWindowGrid" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="54*"/>
+            <RowDefinition Height="467*"/>
+            <RowDefinition Height="62*"/>
+        </Grid.RowDefinitions>
+        <!--<Label Style="{StaticResource AwesomeStyle}" Content="Dude is this style loaded?"></Label>-->
+
+        <Button Content="Whatup assface" Style="{StaticResource NavigationButton}"/>
+        <Frame x:Name="MainWindowFrame" Grid.Row="1">
+        </Frame>
+        <Button Content="Back" HorizontalAlignment="Left" Height="29" Margin="41,23,0,0" Grid.Row="2" VerticalAlignment="Top" Width="113" Click="Back"/>
+        <Button Content="Next" HorizontalAlignment="Left" Height="29" Margin="228,23,0,0" Grid.Row="2" VerticalAlignment="Top" Width="112" Click="Next"/>
+    </Grid>
+</Window>
